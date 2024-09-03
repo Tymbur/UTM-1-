@@ -81,12 +81,12 @@ jobs:
           key: macos-universal-${{ hashFiles('scripts/build_dependencies.sh') }}-${{ hashFiles('patches/**') }}
       - name: Download Sysroot (arm64)
         if: steps.cache-sysroot.outputs.cache-hit != 'true'
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v4.1.7
         with:
           name: Sysroot-macos-arm64
       - name: Download Sysroot (x86_64)
         if: steps.cache-sysroot.outputs.cache-hit != 'true'
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v4.1.7
         with:
           name: Sysroot-macos-x86_64
       - name: Pack Universal Sysroot
@@ -126,7 +126,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
       - name: Download Artifact
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v4.1.7
         with:
           name: UTM-ios-arm64
       - name: Install ldid
@@ -159,7 +159,7 @@ jobs:
     if: github.event_name == 'release'
     steps:
       - name: Download Artifact
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v4.1.7
         with:
           name: UTM-macos-universal
       - name: Fixup Permissions
